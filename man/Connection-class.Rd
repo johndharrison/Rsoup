@@ -23,15 +23,9 @@ Request configuration can be made using either the shortcut methods in Connectio
   value)}:}{Set a cookie to be sent in the request.
   \describe{ \item{\code{name: }}{Character: name of cookie
   } \item{\code{value: }}{Character: value of cookie} } }
-  \item{\code{parse(html, baseUri)}:}{ Parse HTML into a
-  Document. The parser will make a sensible, balanced
-  document tree out of any HTML. \describe{
-  \item{\code{html: }}{A character string. HTML to parse}
-  \item{\code{baseUri: }}{A boolean. The URL where the HTML
-  was retrieved from. Used to resolve relative URLs to
-  absolute URLs, that occur before the HTML declares a
-  <base href> tag. If NA is specified, absolute URL
-  detection relies on the HTML including a <base href>
-  tag.} } } }
+  \item{\code{cookies(cookies)}:}{Adds each of the supplied
+  cookies to the request. \describe{ \item{\code{cookies:
+  }}{list: A list of cookie names and value pairs. The list
+  values should be of type character.} } } }
 }
 
