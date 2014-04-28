@@ -19,15 +19,13 @@ Request configuration can be made using either the shortcut methods in Connectio
 \section{Methods}{
   \describe{ \item{\code{new(...)}:}{ Create a new
   \code{Connection} object. ... is used to define the
-  appropriate slots.} \item{\code{connect(url)}:}{ Creates
-  a new \code{\link{Connection}} to a URL. Use to fetch and
-  parse a HTML page. To the connection you can add data,
-  cookies, and headers; set the user-agent, referrer,
-  method; and then execute. \describe{ \item{\code{url:
-  }}{URL to connect to. The protocol must be http or
-  https.} } } \item{\code{parse(html, baseUri)}:}{ Parse
-  HTML into a Document. The parser will make a sensible,
-  balanced document tree out of any HTML. \describe{
+  appropriate slots.} \item{\code{cookie(name,
+  value)}:}{Set a cookie to be sent in the request.
+  \describe{ \item{\code{name: }}{Character: name of cookie
+  } \item{\code{value: }}{Character: value of cookie} } }
+  \item{\code{parse(html, baseUri)}:}{ Parse HTML into a
+  Document. The parser will make a sensible, balanced
+  document tree out of any HTML. \describe{
   \item{\code{html: }}{A character string. HTML to parse}
   \item{\code{baseUri: }}{A boolean. The URL where the HTML
   was retrieved from. Used to resolve relative URLs to

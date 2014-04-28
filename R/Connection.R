@@ -13,9 +13,10 @@
 #' @section Methods:
 #' \describe{
 #' \item{\code{new(...)}:}{ Create a new \code{Connection} object. ... is used to define the appropriate slots.}
-#' \item{\code{connect(url)}:}{ Creates a new \code{\link{Connection}} to a URL. Use to fetch and parse a HTML page. To the connection you can add data, cookies, and headers; set the user-agent, referrer, method; and then execute. 
+#' \item{\code{cookie(name, value)}:}{Set a cookie to be sent in the request. 
 #' \describe{
-#' \item{\code{url: }}{URL to connect to. The protocol must be http or https.}
+#' \item{\code{name: }}{Character: name of cookie }
+#' \item{\code{value: }}{Character: value of cookie}
 #' }
 #' }
 #' \item{\code{parse(html, baseUri)}:}{ Parse HTML into a Document. The parser will make a sensible, balanced document tree out of any HTML.
@@ -30,7 +31,7 @@
 #' @export Connection
 #' @exportClass Connection
 #' @aliases Connection
- 
+
 Connection <- setRefClass("Connection",
                           fields = list(
                             url = "character",
@@ -44,6 +45,14 @@ Connection <- setRefClass("Connection",
                               url <<- url
                               callSuper(...)
                               connection <<- jsoup$connect(url)
+                            },
+                            
+                            cookie = function(name, value){
+                              if(is.character(name) && is.character(value)){
+                                connection$cookie(name= name, value = value)
+                              }else{
+                                stop("Cookie name and value should be character strings")
+                              }
                             }
                           )
 )
