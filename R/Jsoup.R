@@ -21,7 +21,20 @@
 #' \item{\code{parse(html, baseUri)}:}{ Parse HTML into a Document. The parser will make a sensible, balanced document tree out of any HTML.
 #' \describe{
 #' \item{\code{html: }}{A character string. HTML to parse}
-#' \item{\code{baseUri: }}{A boolean. The URL where the HTML was retrieved from. Used to resolve relative URLs to absolute URLs, that occur before the HTML declares a <base href> tag. If NA is specified, absolute URL detection relies on the HTML including a <base href> tag.}
+#' \item{\code{baseUri: }}{A character string. The URL where the HTML was retrieved from. Used to resolve relative URLs to absolute URLs, that occur before the HTML declares a <base href> tag. If NA is specified, absolute URL detection relies on the HTML including a <base href> tag.}
+#' }
+#' }
+#' \item{\code{clean(bodyHtml, whitelist, baseUri = NA)}:}{ Parse HTML into a Document. The parser will make a sensible, balanced document tree out of any HTML.
+#' \describe{
+#' \item{\code{bodyhtml: }}{A character string. input untrusted HTML (body fragment) }
+#' \item{\code{whitelist: }}{A \code{\link{Whitelist}}. The default is type = "none". See Whitelist documentation for detail.}
+#' \item{\code{baseUri: }}{A character string. The URL where the HTML was retrieved from. Used to resolve relative URLs to absolute URLs, that occur before the HTML declares a <base href> tag. If NA is specified, absolute URL detection relies on the HTML including a <base href> tag.}
+#' }
+#' }
+#' \item{\code{isValid(bodyHtml, whitelist)}:}{ Test if the input HTML has only tags and attributes allowed by the Whitelist. Useful for form validation. The input HTML should still be run through the cleaner to set up enforced attributes, and to tidy the output. 
+#' \describe{
+#' \item{\code{bodyhtml: }}{A character string. input untrusted HTML (body fragment) }
+#' \item{\code{whitelist: }}{A \code{\link{Whitelist}}. The default is type = "none". See Whitelist documentation for detail.}
 #' }
 #' }
 #' }
@@ -53,6 +66,26 @@ Jsoup <- setRefClass("Jsoup",
                          }
                          
                          Document$new(document = document)$import(.self)
+                       },
+                       
+                       clean = function(bodyHtml, whitelist = Whitelist(), baseUri = NA){
+                         if(!identical(as.character(class(whitelist)), "Whitelist")){
+                           stop("Argument: whitelist needs to be of class Whitelist")
+                         }
+                         if(is.na(baseUri)){
+                           jsoup$clean(bodyHtml = bodyHtml, whitelist = whitelist$whitelist)
+                         }else{
+                           jsoup$clean(bodyHtml = bodyHtml, baseUri = baseUri, whitelist = whitelist$whitelist)
+                         }
+                         
+                       },
+                       
+                       isValid = function(bodyHtml, whitelist = Whitelist()){
+                         if(!identical(as.character(class(whitelist)), "Whitelist")){
+                           stop("Argument: whitelist needs to be of class Whitelist")
+                         }
+                         
+                         jsoup$isValid(bodyHtml, whitelist$whitelist)
                        }
                      )
 )
