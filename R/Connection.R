@@ -26,6 +26,8 @@
 #' }
 #' \item{\code{get()}:}{Execute the request as a GET, and parse the result. Returns a \code{\link{Document}}}
 #' \item{\code{post()}:}{Execute the request as a POST, and parse the result. Returns a \code{\link{Document}}}
+#' \item{\code{getUrl()}:}{Get the URL}
+#' \item{\code{setUrl()}:}{Set the URL}
 #' }
 #' 
 #' @include Jsoup.R
@@ -35,15 +37,15 @@
 
 Connection <- setRefClass("Connection",
                           fields = list(
-                            url = "character",
+                            #                            url = "character",
                             connection = "jobjRef"
                           ),
                           
                           contains = "Jsoup",
                           
                           methods = list(
-                            initialize = function(url, ...){
-                              url <<- url
+                            initialize = function(url = "http://www.google.com/ncr", ...){
+                              #                              url <<- url
                               callSuper(...)
                               connection <<- jsoup$connect(url)
                             },
@@ -74,6 +76,16 @@ Connection <- setRefClass("Connection",
                             
                             post = function(){
                               Document$new(document = connection$post())$import(Jsoup)
+                            },
+                            
+                            getUrl = function(){
+                              connection$url()
+                            },
+                            
+                            setUrl = function(url){
+                              jUrl <- .jnew('java.net.URL', url)
+                              connection$url(jUrl)
                             }
+                            
                           )
 )

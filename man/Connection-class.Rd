@@ -30,6 +30,8 @@ Request configuration can be made using either the shortcut methods in Connectio
   \item{\code{get()}:}{Execute the request as a GET, and
   parse the result. Returns a \code{\link{Document}}}
   \item{\code{post()}:}{Execute the request as a POST, and
-  parse the result. Returns a \code{\link{Document}}} }
+  parse the result. Returns a \code{\link{Document}}}
+  \item{\code{getUrl()}:}{Get the URL}
+  \item{\code{setUrl()}:}{Set the URL} }
 }
 
