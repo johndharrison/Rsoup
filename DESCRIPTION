@@ -16,4 +16,5 @@ Collate:
     'Connection.R'
     'Document.R'
     'Parser.R'
+    'Response.R'
     'Whiltelist.R'
