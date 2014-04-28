@@ -15,4 +15,5 @@ Collate:
     'Jsoup.R'
     'Connection.R'
     'Document.R'
+    'Parser.R'
     'Whiltelist.R'

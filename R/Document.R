@@ -33,8 +33,6 @@
 
 Document <- setRefClass("Document",
                         fields = list(
-                          #                           html = "character",
-                          #                           baseUri = "character",
                           document = "jobjRef"
                         ),
                         
@@ -44,15 +42,5 @@ Document <- setRefClass("Document",
                           initialize = function(document){
                             document <<- document
                           }
-                          #                           initialize = function(html, baseUri, ...){
-                          #                             html <<- html
-                          #                             baseUri <<- baseUri
-                          #                             callSuper(...)
-                          #                             if(is.na(baseUri)){
-                          #                               document <<- .self$jsoup$parse(html)
-                          #                             }else{
-                          #                               document <<- .self$jsoup$parse(html, baseUri)
-                          #                             }
-                          #                           }
                         )
 )
