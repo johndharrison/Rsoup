@@ -24,6 +24,7 @@
 #' \item{\code{cookies: }}{list: A list of cookie names and value pairs. The list values should be of type character.}
 #' }
 #' }
+#' \item{\code{get()}:}{Execute the request as a GET, and parse the result. Returns a \code{\link{Document}}}
 #' }
 #' 
 #' @include Jsoup.R
@@ -64,6 +65,10 @@ Connection <- setRefClass("Connection",
                               }else{
                                 stop("cookies should be a list")
                               }
+                            },
+                            
+                            get = function(){
+                              Document$new(document = connection$get())$import(Jsoup)
                             }
                           )
 )

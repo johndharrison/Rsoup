@@ -26,6 +26,8 @@ Request configuration can be made using either the shortcut methods in Connectio
   \item{\code{cookies(cookies)}:}{Adds each of the supplied
   cookies to the request. \describe{ \item{\code{cookies:
   }}{list: A list of cookie names and value pairs. The list
-  values should be of type character.} } } }
+  values should be of type character.} } }
+  \item{\code{get()}:}{Execute the request as a GET, and
+  parse the result. Returns a \code{\link{Document}}} }
 }
 
