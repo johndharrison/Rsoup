@@ -28,6 +28,8 @@ Request configuration can be made using either the shortcut methods in Connectio
   }}{list: A list of cookie names and value pairs. The list
   values should be of type character.} } }
   \item{\code{get()}:}{Execute the request as a GET, and
+  parse the result. Returns a \code{\link{Document}}}
+  \item{\code{post()}:}{Execute the request as a POST, and
   parse the result. Returns a \code{\link{Document}}} }
 }
 

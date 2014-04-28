@@ -17,7 +17,7 @@ A HTML Document.
 
 \section{Methods}{
   \describe{ \item{\code{new(...)}:}{ Create a new
-  \code{Connection} object. ... is used to define the
+  \code{Document} object. ... is used to define the
   appropriate slots.} \item{\code{connect(url)}:}{ Creates
   a new \code{\link{Connection}} to a URL. Use to fetch and
   parse a HTML page. To the connection you can add data,

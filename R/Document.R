@@ -13,7 +13,7 @@
 #'
 #' @section Methods:
 #' \describe{
-#' \item{\code{new(...)}:}{ Create a new \code{Connection} object. ... is used to define the appropriate slots.}
+#' \item{\code{new(...)}:}{ Create a new \code{Document} object. ... is used to define the appropriate slots.}
 #' \item{\code{connect(url)}:}{ Creates a new \code{\link{Connection}} to a URL. Use to fetch and parse a HTML page. To the connection you can add data, cookies, and headers; set the user-agent, referrer, method; and then execute. 
 #' \describe{
 #' \item{\code{url: }}{URL to connect to. The protocol must be http or https.}

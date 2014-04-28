@@ -25,6 +25,7 @@
 #' }
 #' }
 #' \item{\code{get()}:}{Execute the request as a GET, and parse the result. Returns a \code{\link{Document}}}
+#' \item{\code{post()}:}{Execute the request as a POST, and parse the result. Returns a \code{\link{Document}}}
 #' }
 #' 
 #' @include Jsoup.R
@@ -69,6 +70,10 @@ Connection <- setRefClass("Connection",
                             
                             get = function(){
                               Document$new(document = connection$get())$import(Jsoup)
+                            },
+                            
+                            post = function(){
+                              Document$new(document = connection$post())$import(Jsoup)
                             }
                           )
 )
