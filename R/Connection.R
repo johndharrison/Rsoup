@@ -24,8 +24,8 @@
 #' \item{\code{cookies: }}{list: A list of cookie names and value pairs. The list values should be of type character.}
 #' }
 #' }
-#' \item{\code{get()}:}{Execute the request as a GET, and parse the result. Returns a \code{\link{Document}}}
-#' \item{\code{post()}:}{Execute the request as a POST, and parse the result. Returns a \code{\link{Document}}}
+#' \item{\code{GET()}:}{Execute the request as a GET, and parse the result. Returns a \code{\link{Document}}}
+#' \item{\code{POST()}:}{Execute the request as a POST, and parse the result. Returns a \code{\link{Document}}}
 #' \item{\code{getUrl()}:}{Get the URL}
 #' \item{\code{setUrl()}:}{Set the URL}
 #' }
@@ -70,12 +70,12 @@ Connection <- setRefClass("Connection",
                               }
                             },
                             
-                            get = function(){
-                              Document$new(document = connection$get())$import(Jsoup)
+                            GET = function(){
+                              Document$new(document = connection$get())$import(.self$export('Jsoup'))
                             },
                             
-                            post = function(){
-                              Document$new(document = connection$post())$import(Jsoup)
+                            POST = function(){
+                              Document$new(document = connection$post())$import(.self$export('Jsoup'))
                             },
                             
                             getUrl = function(){
